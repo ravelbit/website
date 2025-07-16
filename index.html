@@ -15,12 +15,42 @@
             background: #13181c;
             color: #e8eaef;
         }
+
+        #main {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            padding: 2rem 3rem;
+            border-radius: 1.5rem;
+            background: rgba(23, 30, 36, 0.7);
+            box-shadow: 0 2px 32px #0c0f13a2;
+            min-width: 280px;
+            max-width: 98vw;
+        }
+
+        #main h1 {
+            font-size: 2.6rem;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.7rem;
+            font-weight: 700;
+        }
+
+        #main p {
+            font-size: 1.25rem;
+            color: #93aac8;
+            letter-spacing: 0.01em;
+            margin-top: 0;
+        }
     </style>
 </head>
 
 <body>
-    <h1 align="center">RavelBit</h1>
-    <p align="center">Modern AI tools for security researchers.</p>
+    <div id="main">
+        <h1>RavelBit</h1>
+        <p>Modern AI tools for security researchers.</p>
+    </div>
 </body>
 
 </html>
