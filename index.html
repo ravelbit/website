@@ -13,6 +13,7 @@
             height: 100%;
             margin: 0;
             padding: 0;
+            overflow: hidden;
             font-family: 'Fira Mono', 'Menlo', 'Consolas', monospace;
             background: #13181c;
             color: #e8eaef;
@@ -20,38 +21,52 @@
 
         #main {
             position: absolute;
-            top: 50%;
+            top: 30%;
             left: 50%;
             transform: translate(-50%, -50%);
-            text-align: center;
+            z-index: 1;
             padding: 2rem 3rem;
             border-radius: 1.5rem;
             background: rgba(23, 30, 36, 0.7);
             box-shadow: 0 2px 32px #0c0f13a2;
-            min-width: 280px;
-            max-width: 98vw;
+            display: flex;
+            align-items: center;
         }
 
-        #main h1 {
-            font-size: 2.6rem;
+        #main #logo {
+            margin-right: 1rem;
+            width: 6rem;
+            height: 6rem;
+            justify-items: right;
+        }
+
+        #main #title {
+            font-size: 2.25rem;
             letter-spacing: 0.08em;
+            margin-top: 0.7rem;
             margin-bottom: 0.7rem;
             font-weight: 700;
+            text-align: left;
         }
 
-        #main p {
-            font-size: 1.25rem;
+        #main #description {
+            font-size: 1.20rem;
             color: #93aac8;
             letter-spacing: 0.01em;
             margin-top: 0;
+            margin-bottom: 0.7rem;
+            text-align: left;
         }
     </style>
 </head>
 
 <body>
     <div id="main">
-        <h1>RavelBit</h1>
-        <p>Modern AI tools for security researchers.</p>
+        <img id="logo" src="logo-white.png" alt="RavelBit logo">
+        <div>
+            <h1 id="title">RavelBit</h1>
+            <p id="description">Modern AI tools for security researchers.</p>
+        </div>
     </div>
 </body>
 
