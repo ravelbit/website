@@ -19,6 +19,7 @@
     <meta name="description" content="RavelBit introduces modern AI tools for security researchers.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <script defer src="background.js"></script>
     <style>
         html,
         body {
@@ -94,84 +95,6 @@
             <p id="description">Modern AI tools for security researchers.</p>
         </div>
     </div>
-
-    <script>
-        /**
-         * Renders a static matrix of random bits as a background.
-         * Redraws on window resize.
-         */
-        (function () {
-            'use strict';
-
-            /** @const {number} Font size in pixels for bits. */
-            const FONT_SIZE = 22;
-            /** @const {HTMLCanvasElement} Canvas element for background. */
-            const canvas = document.getElementById('bg-canvas');
-            /** @const {CanvasRenderingContext2D} Canvas 2D context. */
-            const ctx = canvas.getContext('2d');
-
-            let width = window.innerWidth;
-            let height = window.innerHeight;
-            let cols, rows, bits, offsets, phases;
-
-            /**
-             * Resizes the canvas to fit the window.
-             */
-            function resizeCanvas() {
-                width = window.innerWidth;
-                height = window.innerHeight;
-                canvas.width = width;
-                canvas.height = height;
-            }
-
-            /**
-             * Initializes the bit matrix and related arrays.
-             */
-            function initBits() {
-                cols = Math.floor(width / FONT_SIZE) + 2;
-                rows = Math.floor(height / FONT_SIZE) + 2;
-                bits = Array.from({ length: cols }, () =>
-                    Array.from({ length: rows }, () => Math.random() > 0.5 ? '1' : '0')
-                );
-                offsets = Array.from({ length: cols }, () => Math.random() * 1000);
-                phases = Array.from({ length: cols }, () => Math.random() * Math.PI * 2);
-            }
-
-            /**
-             * Draws the static bit matrix background.
-             */
-            function drawBits() {
-                ctx.clearRect(0, 0, width, height);
-                ctx.font = `${FONT_SIZE}px Fira Mono, Menlo, monospace`;
-                ctx.fillStyle = '#2a3e5c';
-                ctx.textAlign = 'center';
-                ctx.textBaseline = 'middle';
-                for (let i = 0; i < cols; i++) {
-                    const x = i * FONT_SIZE + FONT_SIZE / 2;
-                    const phase = phases[i];
-                    for (let j = 0; j < rows; j++) {
-                        const y = (j * FONT_SIZE + FONT_SIZE / 2) +
-                            (Math.sin(offsets[i] + phase + j * 0.16) * 2.2);
-                        ctx.globalAlpha = 0.33 + 0.19 * Math.sin(j * 0.2 + i * 0.1);
-                        ctx.fillText(bits[i][j], x, y);
-                    }
-                }
-                ctx.globalAlpha = 1.0;
-            }
-
-            /**
-             * Handles window resize: resizes canvas, re-initializes bits, and redraws.
-             */
-            function handleResize() {
-                resizeCanvas();
-                initBits();
-                drawBits();
-            }
-
-            handleResize();
-            window.addEventListener('resize', handleResize);
-        })();
-    </script>
 </body>
 
 </html>
